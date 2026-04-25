@@ -1,0 +1,1004 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Visa-Free Countries for Indian Passport Holders</title>
+<script>
+  // Apply persisted theme before first paint to avoid flash.
+  (function () {
+    try {
+      var t = localStorage.getItem("visaMapTheme") || "light";
+      document.documentElement.dataset.theme = t;
+    } catch (e) {}
+  })();
+</script>
+<style>
+  :root {
+    /* Light theme (default) */
+    --bg: #f8fafc;
+    --panel: #ffffff;
+    --text: #0f172a;
+    --muted: #64748b;
+    --header-bg: linear-gradient(180deg, #ffffff 0%, #f1f5f9 100%);
+    --divider: #e2e8f0;
+    --hover-bg: #f1f5f9;
+    --ocean: #dbeafe;
+    --graticule-stroke: #cbd5e1;
+    --sphere-stroke: #94a3b8;
+    --border: #94a3b8;
+
+    --free: #16a34a;
+    --free-hover: #15803d;
+    --free-text: #15803d;
+    --voa: #eab308;
+    --voa-hover: #ca8a04;
+    --voa-text: #a16207;
+    --evisa: #2563eb;
+    --evisa-hover: #1d4ed8;
+    --evisa-text: #1d4ed8;
+    --required: #dc2626;
+    --required-hover: #b91c1c;
+    --required-text: #b91c1c;
+    --other: #e2e8f0;
+    --other-hover: #cbd5e1;
+
+    --chip-border: #cbd5e1;
+    --chip-hover-bg: #f1f5f9;
+    --chip-hover-border: #94a3b8;
+    --chip-active-bg: #2563eb;
+    --chip-active-hover-bg: #1d4ed8;
+    --chip-active-border: #3b82f6;
+    --chip-active-text: #ffffff;
+
+    --tooltip-bg: rgba(255, 255, 255, 0.98);
+    --tooltip-border: #cbd5e1;
+    --tooltip-text: #0f172a;
+    --tooltip-shadow: 0 4px 14px rgba(15, 23, 42, 0.12);
+
+    --tag-bg: rgba(37, 99, 235, 0.1);
+    --tag-text: #1d4ed8;
+    --tag-border: rgba(37, 99, 235, 0.35);
+
+    --unlocked-stroke: #d97706;
+  }
+  [data-theme="dark"] {
+    --bg: #0f172a;
+    --panel: #1e293b;
+    --text: #e2e8f0;
+    --muted: #94a3b8;
+    --header-bg: linear-gradient(180deg, #111c36 0%, #0f172a 100%);
+    --divider: #0b1220;
+    --hover-bg: #0b1220;
+    --ocean: #0b1220;
+    --graticule-stroke: #1f2a44;
+    --sphere-stroke: #1f2a44;
+    --border: #0b1220;
+
+    --free: #16a34a;
+    --free-hover: #22c55e;
+    --free-text: #4ade80;
+    --voa: #eab308;
+    --voa-hover: #facc15;
+    --voa-text: #facc15;
+    --evisa: #2563eb;
+    --evisa-hover: #3b82f6;
+    --evisa-text: #60a5fa;
+    --required: #dc2626;
+    --required-hover: #ef4444;
+    --required-text: #fca5a5;
+    --other: #334155;
+    --other-hover: #475569;
+
+    --chip-border: #475569;
+    --chip-hover-bg: rgba(100, 116, 139, 0.15);
+    --chip-hover-border: #64748b;
+    --chip-active-bg: #1d4ed8;
+    --chip-active-hover-bg: #2563eb;
+    --chip-active-border: #3b82f6;
+    --chip-active-text: #ffffff;
+
+    --tooltip-bg: rgba(15, 23, 42, 0.95);
+    --tooltip-border: #334155;
+    --tooltip-text: #e2e8f0;
+    --tooltip-shadow: none;
+
+    --tag-bg: rgba(59, 130, 246, 0.18);
+    --tag-text: #93c5fd;
+    --tag-border: rgba(59, 130, 246, 0.4);
+
+    --unlocked-stroke: #fbbf24;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; height: 100%; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    display: flex;
+    flex-direction: column;
+  }
+  header {
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--divider);
+    background: var(--header-bg);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  header .title { min-width: 0; }
+  h1 { margin: 0 0 4px; font-size: 20px; font-weight: 600; }
+  header p { margin: 0; color: var(--muted); font-size: 13px; }
+  .theme-toggle {
+    appearance: none;
+    background: transparent;
+    border: 1px solid var(--chip-border);
+    color: var(--text);
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 120ms ease;
+  }
+  .theme-toggle:hover { background: var(--chip-hover-bg); border-color: var(--chip-hover-border); }
+  .theme-toggle svg { width: 14px; height: 14px; }
+
+  .chip-bar {
+    background: var(--panel);
+    padding: 12px 24px;
+    border-bottom: 1px solid var(--divider);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .chip-bar .label {
+    font-size: 13px;
+    color: var(--muted);
+    flex-shrink: 0;
+  }
+  .chip-bar .label strong { color: var(--text); font-weight: 600; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip {
+    appearance: none;
+    border: 1px solid var(--chip-border);
+    background: transparent;
+    color: var(--text);
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 120ms ease;
+    user-select: none;
+  }
+  .chip:hover { border-color: var(--chip-hover-border); background: var(--chip-hover-bg); }
+  .chip.active {
+    background: var(--chip-active-bg);
+    border-color: var(--chip-active-border);
+    color: var(--chip-active-text);
+  }
+  .chip.active:hover { background: var(--chip-active-hover-bg); }
+  .chip-bar .clear {
+    margin-left: auto;
+    font-size: 12px;
+    color: var(--muted);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px 8px;
+  }
+  .chip-bar .clear:hover { color: var(--text); }
+  .chip-bar .clear:disabled { opacity: 0.3; cursor: default; }
+  .country.unlocked { stroke: var(--unlocked-stroke); stroke-width: 0.8px; }
+  .tag {
+    display: inline-block;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    border: 1px solid var(--tag-border);
+    padding: 0 6px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-left: 4px;
+  }
+  main {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 12px;
+    padding: 12px;
+    min-height: 0;
+  }
+  #map-wrap {
+    background: var(--panel);
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    min-height: 0;
+  }
+  svg { display: block; width: 100%; height: 100%; background: var(--ocean); }
+  .country {
+    fill: var(--other);
+    stroke: var(--border);
+    stroke-width: 0.4px;
+    cursor: default;
+    transition: fill 120ms ease;
+  }
+  .country:hover { fill: var(--other-hover); }
+  .country.visa-free { fill: var(--free); }
+  .country.visa-free:hover { fill: var(--free-hover); }
+  .country.visa-on-arrival { fill: var(--voa); }
+  .country.visa-on-arrival:hover { fill: var(--voa-hover); }
+  .country.e-visa { fill: var(--evisa); }
+  .country.e-visa:hover { fill: var(--evisa-hover); }
+  .country.visa-required { fill: var(--required); }
+  .country.visa-required:hover { fill: var(--required-hover); }
+  .graticule { fill: none; stroke: var(--graticule-stroke); stroke-width: 0.3px; }
+  .sphere { fill: var(--ocean); stroke: var(--sphere-stroke); stroke-width: 0.5px; }
+
+  aside {
+    background: var(--panel);
+    border-radius: 8px;
+    padding: 16px;
+    overflow: auto;
+  }
+  aside h2 { margin: 0 0 8px; font-size: 14px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+  .legend { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+  .legend-row { display: flex; align-items: center; gap: 10px; font-size: 13px; }
+  .swatch { width: 14px; height: 14px; border-radius: 3px; border: 1px solid var(--border); }
+  .swatch.free { background: var(--free); }
+  .swatch.voa { background: var(--voa); }
+  .swatch.evisa { background: var(--evisa); }
+  .swatch.required { background: var(--required); }
+  .swatch.other { background: var(--other); }
+
+  ul.country-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    font-size: 13px;
+  }
+  ul.country-list li {
+    padding: 4px 8px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  ul.country-list li:hover { background: var(--hover-bg); }
+  ul.country-list li .dur { color: var(--muted); font-size: 11px; }
+
+  #tooltip {
+    position: absolute;
+    pointer-events: none;
+    background: var(--tooltip-bg);
+    color: var(--tooltip-text);
+    border: 1px solid var(--tooltip-border);
+    box-shadow: var(--tooltip-shadow);
+    border-radius: 6px;
+    padding: 6px 10px;
+    font-size: 12px;
+    transform: translate(-50%, -120%);
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 100ms ease;
+  }
+  #tooltip.show { opacity: 1; }
+  .summary { font-size: 12px; color: var(--muted); margin-top: 4px; }
+  footer { padding: 8px 24px 12px; font-size: 11px; color: var(--muted); }
+  @media (max-width: 720px) {
+    main { grid-template-columns: 1fr; }
+    aside { max-height: 40vh; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="title">
+    <h1>Visa-Free Countries for Indian Passport Holders</h1>
+    <p><span style="color:var(--free-text); font-weight:600;">Green</span> = visa-free. <span style="color:var(--voa-text); font-weight:600;">Yellow</span> = visa on arrival. <span style="color:var(--evisa-text); font-weight:600;">Blue</span> = e-visa. <span style="color:var(--required-text); font-weight:600;">Red</span> = visa required.</p>
+  </div>
+  <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+    <svg id="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"></svg>
+    <span id="theme-label">Dark mode</span>
+  </button>
+</header>
+<section class="chip-bar">
+  <div class="label"><strong>Do you hold any of these visas?</strong> Select to unlock more destinations.</div>
+  <div class="chips" id="chips"></div>
+  <button class="clear" id="clear-chips" disabled>Clear all</button>
+</section>
+<main>
+  <div id="map-wrap">
+    <svg id="map" viewBox="0 0 960 500" preserveAspectRatio="xMidYMid meet"></svg>
+    <div id="tooltip"></div>
+  </div>
+  <aside>
+    <h2>Legend</h2>
+    <div class="legend">
+      <div class="legend-row"><span class="swatch free"></span><span>Visa-free</span></div>
+      <div class="legend-row"><span class="swatch voa"></span><span>Visa on arrival</span></div>
+      <div class="legend-row"><span class="swatch evisa"></span><span>E-visa</span></div>
+      <div class="legend-row"><span class="swatch required"></span><span>Visa required</span></div>
+      <div class="legend-row"><span class="swatch other"></span><span>No data / other</span></div>
+    </div>
+    <h2>Visa-Free</h2>
+    <div class="summary" id="summary-free"></div>
+    <ul class="country-list" id="list-free"></ul>
+    <h2 style="margin-top:16px;">Visa on Arrival</h2>
+    <div class="summary" id="summary-voa"></div>
+    <ul class="country-list" id="list-voa"></ul>
+    <h2 style="margin-top:16px;">E-Visa</h2>
+    <div class="summary" id="summary-evisa"></div>
+    <ul class="country-list" id="list-evisa"></ul>
+    <h2 style="margin-top:16px;">Visa Required</h2>
+    <div class="summary" id="summary-required"></div>
+    <ul class="country-list" id="list-required"></ul>
+  </aside>
+</main>
+<footer>Data: Passport Index dataset (2025-01-12). Map: world-atlas / Natural Earth.</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
+<script>
+// Visa-required countries for Indian passport.
+const VISA_REQUIRED = {
+  "Afghanistan": "visa required",
+  "Algeria": "visa required",
+  "Andorra": "visa required",
+  "Argentina": "visa required",
+  "Austria": "visa required",
+  "Bangladesh": "visa required",
+  "Belarus": "visa required",
+  "Belgium": "visa required",
+  "Belize": "visa required",
+  "Bosnia and Herzegovina": "visa required",
+  "Brazil": "visa required",
+  "Brunei": "visa required",
+  "Bulgaria": "visa required",
+  "Canada": "visa required",
+  "Central African Republic": "visa required",
+  "Chad": "visa required",
+  "Chile": "visa required",
+  "China": "visa required",
+  "Congo": "visa required",
+  "Costa Rica": "visa required",
+  "Croatia": "visa required",
+  "Cuba": "visa required",
+  "Cyprus": "visa required",
+  "Czech Republic": "visa required",
+  "Denmark": "visa required",
+  "Dominican Republic": "visa required",
+  "Eritrea": "visa required",
+  "Estonia": "visa required",
+  "Finland": "visa required",
+  "France": "visa required",
+  "Germany": "visa required",
+  "Greece": "visa required",
+  "Guatemala": "visa required",
+  "Guyana": "visa required",
+  "Honduras": "visa required",
+  "Hungary": "visa required",
+  "Iceland": "visa required",
+  "Ireland": "visa required",
+  "Israel": "visa required",
+  "Italy": "visa required",
+  "Kosovo": "visa required",
+  "Kuwait": "visa required",
+  "Latvia": "visa required",
+  "Lebanon": "visa required",
+  "Liberia": "visa required",
+  "Liechtenstein": "visa required",
+  "Lithuania": "visa required",
+  "Luxembourg": "visa required",
+  "Mali": "visa required",
+  "Malta": "visa required",
+  "Mexico": "visa required",
+  "Monaco": "visa required",
+  "Montenegro": "visa required",
+  "Namibia": "visa required",
+  "Nauru": "visa required",
+  "Netherlands": "visa required",
+  "New Zealand": "visa required",
+  "Nicaragua": "visa required",
+  "Niger": "visa required",
+  "North Korea": "visa required",
+  "North Macedonia": "visa required",
+  "Norway": "visa required",
+  "Pakistan": "visa required",
+  "Panama": "visa required",
+  "Paraguay": "visa required",
+  "Peru": "visa required",
+  "Philippines": "visa required",
+  "Poland": "visa required",
+  "Portugal": "visa required",
+  "Romania": "visa required",
+  "San Marino": "visa required",
+  "Saudi Arabia": "visa required",
+  "Serbia": "visa required",
+  "Slovakia": "visa required",
+  "Slovenia": "visa required",
+  "Solomon Islands": "visa required",
+  "Spain": "visa required",
+  "Sudan": "visa required",
+  "Swaziland": "visa required",
+  "Sweden": "visa required",
+  "Switzerland": "visa required",
+  "Taiwan": "visa required",
+  "Tonga": "visa required",
+  "Tunisia": "visa required",
+  "Turkey": "visa required",
+  "Turkmenistan": "visa required",
+  "Ukraine": "visa required",
+  "United Kingdom": "visa required",
+  "United States": "visa required",
+  "Uruguay": "visa required",
+  "Vatican": "visa required",
+  "Venezuela": "visa required",
+  "Yemen": "visa required"
+};
+
+// E-visa countries for Indian passport.
+const E_VISA = {
+  "Albania": "e-visa",
+  "Antigua and Barbuda": "e-visa",
+  "Armenia": "e-visa",
+  "Australia": "e-visa",
+  "Azerbaijan": "e-visa",
+  "Bahamas": "e-visa",
+  "Bahrain": "e-visa",
+  "Benin": "e-visa",
+  "Botswana": "e-visa",
+  "Burkina Faso": "e-visa",
+  "Cameroon": "e-visa",
+  "Colombia": "e-visa",
+  "DR Congo": "e-visa",
+  "Ecuador": "e-visa",
+  "Egypt": "e-visa",
+  "Equatorial Guinea": "e-visa",
+  "Gabon": "e-visa",
+  "Georgia": "e-visa",
+  "Guinea": "e-visa",
+  "Hong Kong": "e-visa",
+  "Iraq": "e-visa",
+  "Ivory Coast": "e-visa",
+  "Japan": "e-visa",
+  "Kenya": "e-visa",
+  "Kyrgyzstan": "e-visa",
+  "Lesotho": "e-visa",
+  "Libya": "e-visa",
+  "Malawi": "e-visa",
+  "Moldova": "e-visa",
+  "Morocco": "e-visa",
+  "Mozambique": "e-visa",
+  "Nigeria": "e-visa",
+  "Oman": "e-visa",
+  "Papua New Guinea": "e-visa",
+  "Russia": "e-visa",
+  "Sao Tome and Principe": "e-visa",
+  "Singapore": "e-visa",
+  "Somalia": "e-visa",
+  "South Africa": "e-visa",
+  "South Korea": "e-visa",
+  "South Sudan": "e-visa",
+  "Suriname": "e-visa",
+  "Syria": "e-visa",
+  "Tajikistan": "e-visa",
+  "Togo": "e-visa",
+  "Uganda": "e-visa",
+  "United Arab Emirates": "e-visa",
+  "Uzbekistan": "e-visa",
+  "Vietnam": "e-visa",
+  "Zambia": "e-visa"
+};
+
+// Visa-on-arrival countries for Indian passport.
+const VISA_ON_ARRIVAL = {
+  "Bolivia": "on arrival",
+  "Burundi": "on arrival",
+  "Cambodia": "on arrival",
+  "Cape Verde": "on arrival",
+  "Comoros": "on arrival",
+  "Djibouti": "on arrival",
+  "Ethiopia": "on arrival",
+  "Ghana": "on arrival",
+  "Guinea-Bissau": "on arrival",
+  "Indonesia": "on arrival",
+  "Jordan": "on arrival",
+  "Laos": "on arrival",
+  "Madagascar": "on arrival",
+  "Maldives": "on arrival",
+  "Marshall Islands": "on arrival",
+  "Mauritania": "on arrival",
+  "Mongolia": "on arrival",
+  "Myanmar": "on arrival",
+  "Palau": "on arrival",
+  "Qatar": "on arrival",
+  "Saint Lucia": "on arrival",
+  "Samoa": "on arrival",
+  "Sierra Leone": "on arrival",
+  "Sri Lanka": "on arrival",
+  "Tanzania": "on arrival",
+  "Timor-Leste": "on arrival",
+  "Tuvalu": "on arrival",
+  "Zimbabwe": "on arrival"
+};
+
+// Visa-free countries for Indian passport, with official duration where given.
+const VISA_FREE = {
+  "Angola": "30 days",
+  "Barbados": "90 days",
+  "Bhutan": "unlimited",
+  "Dominica": "180 days",
+  "El Salvador": "90 days",
+  "Fiji": "120 days",
+  "Gambia": "90 days",
+  "Grenada": "90 days",
+  "Haiti": "90 days",
+  "Iran": "15 days",
+  "Jamaica": "30 days",
+  "Kazakhstan": "14 days",
+  "Kiribati": "90 days",
+  "Macao": "30 days",
+  "Malaysia": "30 days",
+  "Mauritius": "90 days",
+  "Micronesia": "30 days",
+  "Nepal": "unlimited",
+  "Palestine": "—",
+  "Rwanda": "90 days",
+  "Saint Kitts and Nevis": "90 days",
+  "Saint Vincent and the Grenadines": "30 days",
+  "Senegal": "90 days",
+  "Seychelles": "90 days",
+  "Thailand": "60 days",
+  "Trinidad and Tobago": "90 days",
+  "Vanuatu": "30 days"
+};
+
+// Normalize any country name to a canonical key so variant spellings match.
+const NAME_ALIASES = {
+  "the gambia": "Gambia",
+  "gambia, the": "Gambia",
+  "cabo verde": "Cape Verde",
+  "marshall is.": "Marshall Islands",
+  "antigua and barb.": "Antigua and Barbuda",
+  "dem. rep. congo": "DR Congo",
+  "democratic republic of the congo": "DR Congo",
+  "eq. guinea": "Equatorial Guinea",
+  "côte d'ivoire": "Ivory Coast",
+  "cote d'ivoire": "Ivory Coast",
+  "são tomé and principe": "Sao Tome and Principe",
+  "sao tome and principe": "Sao Tome and Principe",
+  "s. sudan": "South Sudan",
+  "bosnia and herz.": "Bosnia and Herzegovina",
+  "central african rep.": "Central African Republic",
+  "czechia": "Czech Republic",
+  "dominican rep.": "Dominican Republic",
+  "macedonia": "North Macedonia",
+  "solomon is.": "Solomon Islands",
+  "eswatini": "Swaziland",
+  "united states of america": "United States",
+  "macau": "Macao",
+  "macau s.a.r": "Macao",
+  "macao s.a.r": "Macao",
+  "federated states of micronesia": "Micronesia",
+  "micronesia (federated states of)": "Micronesia",
+  "palestinian territories": "Palestine",
+  "palestine, state of": "Palestine",
+  "west bank": "Palestine",
+  "st. kitts and nevis": "Saint Kitts and Nevis",
+  "st kitts and nevis": "Saint Kitts and Nevis",
+  "st. vincent and the grenadines": "Saint Vincent and the Grenadines",
+  "st vincent and the grenadines": "Saint Vincent and the Grenadines",
+  "st. vin. and gren.": "Saint Vincent and the Grenadines",
+  "trinidad & tobago": "Trinidad and Tobago",
+  "iran (islamic republic of)": "Iran",
+  "iran, islamic republic of": "Iran",
+  "cayman is.": "Cayman Islands",
+  "british virgin is.": "British Virgin Islands",
+  "turks and caicos is.": "Turks and Caicos"
+};
+
+// Visa-unlock data. Keys are visa types; values map canonical country names to
+// the upgraded access category they confer beyond what an Indian passport alone provides.
+const UNLOCKS = {
+  US: {
+    "Albania": "VISA_FREE",
+    "Argentina": "VISA_FREE",
+    "Bahamas": "VISA_FREE",
+    "Belize": "VISA_FREE",
+    "Bosnia and Herzegovina": "VISA_FREE",
+    "Chile": "VISA_FREE",
+    "Colombia": "VISA_FREE",
+    "Dominican Republic": "VISA_FREE",
+    "Georgia": "VISA_FREE",
+    "Guatemala": "VISA_FREE",
+    "Honduras": "VISA_FREE",
+    "El Salvador": "VISA_FREE",
+    "Nicaragua": "VISA_FREE",
+    "Mexico": "VISA_FREE",
+    "Montenegro": "VISA_FREE",
+    "North Macedonia": "VISA_FREE",
+    "Panama": "VISA_FREE",
+    "Peru": "VISA_FREE",
+    "Philippines": "VISA_FREE",
+    "Serbia": "VISA_FREE",
+    "Singapore": "VISA_FREE",
+    "Antigua and Barbuda": "VISA_ON_ARRIVAL",
+    "Armenia": "E_VISA",
+    "Bahrain": "VISA_ON_ARRIVAL",
+    "Oman": "VISA_ON_ARRIVAL",
+    "Saudi Arabia": "VISA_ON_ARRIVAL",
+    "Turkey": "E_VISA",
+    "United Arab Emirates": "VISA_ON_ARRIVAL"
+  },
+  Schengen: {
+    "Albania": "VISA_FREE",
+    "Andorra": "VISA_FREE",
+    "Armenia": "VISA_ON_ARRIVAL",
+    "Belarus": "VISA_FREE",
+    "Belize": "VISA_FREE",
+    "Bosnia and Herzegovina": "VISA_FREE",
+    "Colombia": "VISA_FREE",
+    "Cyprus": "VISA_FREE",
+    "Georgia": "VISA_FREE",
+    "Guatemala": "VISA_FREE",
+    "Honduras": "VISA_FREE",
+    "El Salvador": "VISA_FREE",
+    "Kyrgyzstan": "VISA_FREE",
+    "Mexico": "VISA_FREE",
+    "Moldova": "VISA_FREE",
+    "Montenegro": "VISA_FREE",
+    "North Macedonia": "VISA_FREE",
+    "Philippines": "VISA_FREE",
+    "San Marino": "VISA_FREE",
+    "Saudi Arabia": "VISA_ON_ARRIVAL",
+    "Serbia": "VISA_FREE",
+    "South Korea": "VISA_FREE",
+    "Taiwan": "VISA_FREE",
+    "Turkey": "E_VISA",
+    "Vatican": "VISA_FREE",
+    "Nicaragua": "VISA_ON_ARRIVAL",
+    "Oman": "VISA_ON_ARRIVAL"
+  },
+  UK: {
+    "Albania": "VISA_FREE",
+    "Armenia": "VISA_FREE",
+    "Bahrain": "VISA_ON_ARRIVAL",
+    "Belarus": "VISA_FREE",
+    "Bermuda": "VISA_FREE",
+    "Bosnia and Herzegovina": "VISA_FREE",
+    "Dominican Republic": "VISA_FREE",
+    "Egypt": "VISA_ON_ARRIVAL",
+    "Georgia": "VISA_FREE",
+    "Gibraltar": "VISA_FREE",
+    "Jordan": "VISA_ON_ARRIVAL",
+    "Mexico": "VISA_FREE",
+    "Montenegro": "VISA_FREE",
+    "North Macedonia": "VISA_FREE",
+    "Oman": "VISA_ON_ARRIVAL",
+    "Peru": "VISA_FREE",
+    "Philippines": "VISA_FREE",
+    "Qatar": "E_VISA",
+    "Saudi Arabia": "VISA_ON_ARRIVAL",
+    "Serbia": "VISA_FREE",
+    "Taiwan": "VISA_FREE",
+    "Turkey": "E_VISA",
+    "United Arab Emirates": "VISA_ON_ARRIVAL"
+  },
+  UAE: {
+    "Armenia": "VISA_ON_ARRIVAL",
+    "Azerbaijan": "VISA_FREE",
+    "Georgia": "VISA_FREE",
+    "Indonesia": "VISA_FREE",
+    "Japan": "VISA_FREE",
+    "Jordan": "VISA_ON_ARRIVAL",
+    "Kyrgyzstan": "VISA_FREE",
+    "Malaysia": "VISA_FREE",
+    "Mauritius": "VISA_FREE",
+    "Montenegro": "VISA_FREE",
+    "Morocco": "VISA_FREE",
+    "Philippines": "VISA_FREE",
+    "Serbia": "VISA_FREE",
+    "Seychelles": "VISA_FREE",
+    "Singapore": "VISA_FREE",
+    "Sri Lanka": "VISA_FREE",
+    "Tanzania": "VISA_ON_ARRIVAL",
+    "Thailand": "VISA_FREE",
+    "Taiwan": "VISA_FREE",
+    "Turkey": "E_VISA"
+  },
+  Canada: {
+    "Albania": "VISA_FREE",
+    "Antigua and Barbuda": "VISA_ON_ARRIVAL",
+    "Armenia": "E_VISA",
+    "Aruba": "VISA_FREE",
+    "Bahamas": "VISA_FREE",
+    "Bahrain": "VISA_ON_ARRIVAL",
+    "Belize": "VISA_FREE",
+    "Bermuda": "VISA_FREE",
+    "Bosnia and Herzegovina": "VISA_FREE",
+    "British Virgin Islands": "VISA_FREE",
+    "Cayman Islands": "VISA_FREE",
+    "Chile": "VISA_FREE",
+    "Colombia": "VISA_FREE",
+    "Curaçao": "VISA_FREE",
+    "Dominican Republic": "VISA_FREE",
+    "Egypt": "VISA_ON_ARRIVAL",
+    "Georgia": "VISA_FREE",
+    "Guatemala": "VISA_FREE",
+    "Honduras": "VISA_FREE",
+    "El Salvador": "VISA_FREE",
+    "Jordan": "VISA_ON_ARRIVAL",
+    "Mexico": "VISA_FREE",
+    "Montenegro": "VISA_FREE",
+    "Nicaragua": "VISA_FREE",
+    "North Macedonia": "VISA_FREE",
+    "Oman": "VISA_ON_ARRIVAL",
+    "Panama": "VISA_FREE",
+    "Peru": "VISA_FREE",
+    "Philippines": "VISA_FREE",
+    "Qatar": "E_VISA",
+    "Saudi Arabia": "VISA_ON_ARRIVAL",
+    "Serbia": "VISA_FREE",
+    "Sint Maarten": "VISA_FREE",
+    "Taiwan": "VISA_FREE",
+    "Turkey": "E_VISA",
+    "Turks and Caicos": "VISA_FREE",
+    "United Arab Emirates": "VISA_ON_ARRIVAL"
+  },
+  Japan: {
+    "Georgia": "VISA_FREE",
+    "Mexico": "VISA_FREE",
+    "Montenegro": "VISA_FREE",
+    "Philippines": "VISA_FREE",
+    "Singapore": "VISA_FREE",
+    "Taiwan": "VISA_FREE",
+    "United Arab Emirates": "VISA_ON_ARRIVAL"
+  },
+  Australia: {
+    "Georgia": "VISA_FREE",
+    "Montenegro": "VISA_FREE",
+    "Panama": "VISA_FREE",
+    "Peru": "VISA_FREE",
+    "Philippines": "VISA_FREE",
+    "Singapore": "VISA_FREE",
+    "South Korea": "VISA_FREE",
+    "Taiwan": "E_VISA"
+  },
+  NZ: {
+    "Georgia": "VISA_FREE",
+    "Montenegro": "VISA_FREE",
+    "Panama": "VISA_FREE",
+    "Peru": "VISA_FREE",
+    "Philippines": "VISA_FREE",
+    "Singapore": "VISA_FREE",
+    "South Korea": "VISA_FREE",
+    "Taiwan": "E_VISA"
+  }
+};
+
+const VISA_KEYS = ["US", "Schengen", "UK", "UAE", "Canada", "Japan", "Australia", "NZ"];
+
+// Countries the visa itself admits you to. Selecting a chip turns these green.
+const ISSUERS = {
+  US: ["United States"],
+  Schengen: [
+    "Austria", "Belgium", "Bulgaria", "Croatia", "Czech Republic", "Denmark",
+    "Estonia", "Finland", "France", "Germany", "Greece", "Hungary", "Iceland",
+    "Italy", "Latvia", "Liechtenstein", "Lithuania", "Luxembourg", "Malta",
+    "Netherlands", "Norway", "Poland", "Portugal", "Romania", "Slovakia",
+    "Slovenia", "Spain", "Sweden", "Switzerland"
+  ],
+  UK: ["United Kingdom"],
+  UAE: ["United Arab Emirates"],
+  Canada: ["Canada"],
+  Japan: ["Japan"],
+  Australia: ["Australia"],
+  NZ: ["New Zealand"]
+};
+const PRIORITY = { VISA_FREE: 4, VISA_ON_ARRIVAL: 3, E_VISA: 2, VISA_REQUIRED: 1 };
+const CLASS_FOR = {
+  VISA_FREE: "visa-free",
+  VISA_ON_ARRIVAL: "visa-on-arrival",
+  E_VISA: "e-visa",
+  VISA_REQUIRED: "visa-required"
+};
+const LABEL_FOR = {
+  VISA_FREE: "visa-free",
+  VISA_ON_ARRIVAL: "visa on arrival",
+  E_VISA: "e-visa",
+  VISA_REQUIRED: "visa required"
+};
+
+// Base category lookup built from the four dicts above.
+const BASE = {};
+for (const [n, dur] of Object.entries(VISA_FREE)) BASE[n] = { category: "VISA_FREE", duration: dur };
+for (const [n, dur] of Object.entries(VISA_ON_ARRIVAL)) BASE[n] = { category: "VISA_ON_ARRIVAL", duration: dur };
+for (const [n, dur] of Object.entries(E_VISA)) BASE[n] = { category: "E_VISA", duration: dur };
+for (const [n, dur] of Object.entries(VISA_REQUIRED)) BASE[n] = { category: "VISA_REQUIRED", duration: dur };
+
+const activeVisas = new Set();
+
+function effectiveFor(name) {
+  let result = BASE[name] ? { ...BASE[name], unlockedBy: null } : null;
+  for (const v of activeVisas) {
+    if ((ISSUERS[v] || []).includes(name)) {
+      if (!result || PRIORITY.VISA_FREE > PRIORITY[result.category]) {
+        result = { category: "VISA_FREE", duration: null, unlockedBy: v };
+      }
+    }
+    const cat = (UNLOCKS[v] || {})[name];
+    if (!cat) continue;
+    if (!result || PRIORITY[cat] > PRIORITY[result.category]) {
+      result = { category: cat, duration: null, unlockedBy: v };
+    }
+  }
+  return result;
+}
+
+function canonical(name) {
+  if (!name) return "";
+  const key = name.trim().toLowerCase();
+  return NAME_ALIASES[key] || name;
+}
+
+const svg = d3.select("#map");
+const tooltip = d3.select("#tooltip");
+
+const width = 960, height = 500;
+const projection = d3.geoNaturalEarth1().scale(170).translate([width / 2, height / 2]);
+const path = d3.geoPath(projection);
+
+// Sphere + graticule for context.
+svg.append("path").attr("class", "sphere").attr("d", path({ type: "Sphere" }));
+svg.append("path").attr("class", "graticule").attr("d", path(d3.geoGraticule10()));
+
+const g = svg.append("g");
+
+// Theme toggle.
+const themeBtn = document.getElementById("theme-toggle");
+const themeIcon = document.getElementById("theme-icon");
+const themeLabel = document.getElementById("theme-label");
+const ICONS = {
+  // Moon (shown in light mode → click to go dark)
+  light: '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>',
+  // Sun (shown in dark mode → click to go light)
+  dark: '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>'
+};
+function applyTheme(theme) {
+  document.documentElement.dataset.theme = theme;
+  themeIcon.innerHTML = ICONS[theme];
+  themeLabel.textContent = theme === "dark" ? "Light mode" : "Dark mode";
+}
+applyTheme(localStorage.getItem("visaMapTheme") || "light");
+themeBtn.addEventListener("click", () => {
+  const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+  localStorage.setItem("visaMapTheme", next);
+  applyTheme(next);
+});
+
+// Build visa unlock chips.
+const chipsEl = document.getElementById("chips");
+const clearBtn = document.getElementById("clear-chips");
+VISA_KEYS.forEach(key => {
+  const btn = document.createElement("button");
+  btn.className = "chip";
+  btn.textContent = key;
+  btn.dataset.key = key;
+  btn.addEventListener("click", () => {
+    if (activeVisas.has(key)) { activeVisas.delete(key); btn.classList.remove("active"); }
+    else { activeVisas.add(key); btn.classList.add("active"); }
+    clearBtn.disabled = activeVisas.size === 0;
+    render();
+  });
+  chipsEl.appendChild(btn);
+});
+clearBtn.addEventListener("click", () => {
+  activeVisas.clear();
+  document.querySelectorAll(".chip.active").forEach(el => el.classList.remove("active"));
+  clearBtn.disabled = true;
+  render();
+});
+
+let countryPaths = null;
+
+function render() {
+  if (!countryPaths) return;
+  countryPaths
+    .attr("class", d => {
+      const name = canonical(d.properties.name);
+      const eff = effectiveFor(name);
+      if (!eff) return "country";
+      const cls = ["country", CLASS_FOR[eff.category]];
+      if (eff.unlockedBy) cls.push("unlocked");
+      return cls.join(" ");
+    });
+
+  // Rebuild sidebar lists from effective state.
+  const buckets = { VISA_FREE: [], VISA_ON_ARRIVAL: [], E_VISA: [], VISA_REQUIRED: [] };
+  const seen = new Set();
+  // Cover every country named in BASE plus any name appearing in active unlocks.
+  const names = new Set(Object.keys(BASE));
+  for (const v of activeVisas) {
+    Object.keys(UNLOCKS[v] || {}).forEach(n => names.add(n));
+    (ISSUERS[v] || []).forEach(n => names.add(n));
+  }
+  for (const name of names) {
+    const eff = effectiveFor(name);
+    if (!eff || !buckets[eff.category]) continue;
+    if (seen.has(name)) continue;
+    seen.add(name);
+    buckets[eff.category].push({ name, duration: eff.duration, unlockedBy: eff.unlockedBy });
+  }
+
+  const renderBucket = (selector, summarySel, items) => {
+    items.sort((a, b) => a.name.localeCompare(b.name));
+    d3.select(selector).selectAll("li")
+      .data(items, d => d.name)
+      .join("li")
+      .html(d => {
+        const dur = d.duration ? `<span class="dur">${d.duration}</span>` : `<span class="dur">via ${d.unlockedBy}</span>`;
+        const tag = d.unlockedBy ? `<span class="tag">${d.unlockedBy}</span>` : "";
+        return `<span>${d.name}${tag}</span>${dur}`;
+      });
+    d3.select(summarySel).text(`${items.length} countries`);
+  };
+  renderBucket("#list-free", "#summary-free", buckets.VISA_FREE);
+  renderBucket("#list-voa", "#summary-voa", buckets.VISA_ON_ARRIVAL);
+  renderBucket("#list-evisa", "#summary-evisa", buckets.E_VISA);
+  renderBucket("#list-required", "#summary-required", buckets.VISA_REQUIRED);
+}
+
+d3.json("https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-50m.json")
+  .then(world => {
+    const countries = topojson.feature(world, world.objects.countries).features;
+
+    countryPaths = g.selectAll("path.country")
+      .data(countries)
+      .join("path")
+      .attr("d", path)
+      .on("mousemove", (event, d) => {
+        const name = canonical(d.properties.name);
+        const eff = effectiveFor(name);
+        let label;
+        if (eff) {
+          const dur = eff.duration ? ` (${eff.duration})` : "";
+          const via = eff.unlockedBy ? ` <span class="tag">via ${eff.unlockedBy}</span>` : "";
+          label = `<strong>${name}</strong> — ${LABEL_FOR[eff.category]}${dur}${via}`;
+        } else {
+          label = d.properties.name;
+        }
+        const [mx, my] = d3.pointer(event, document.getElementById("map-wrap"));
+        tooltip
+          .html(label)
+          .style("left", mx + "px")
+          .style("top", my + "px")
+          .classed("show", true);
+      })
+      .on("mouseleave", () => tooltip.classed("show", false));
+
+    render();
+  })
+  .catch(err => {
+    svg.append("text")
+      .attr("x", width / 2).attr("y", height / 2)
+      .attr("text-anchor", "middle")
+      .attr("fill", "#f87171")
+      .text("Failed to load map data: " + err.message);
+  });
+</script>
+</body>
+</html>

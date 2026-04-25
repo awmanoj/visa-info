@@ -1,0 +1,646 @@
+{
+  "metadata": {
+    "passport": "India (IN)",
+    "source": "Passport Index Dataset by ilyankou",
+    "source_url": "https://github.com/ilyankou/passport-index-dataset",
+    "data_origin": "passportindex.org (aggregates official government sources)",
+    "dataset_last_updated": "2025-01-12",
+    "generated_at": "2026-04-23",
+    "categories": {
+      "VISA_FREE": "No visa required; entry on passport alone",
+      "VISA_ON_ARRIVAL": "Visa issued at port of entry upon arrival",
+      "E_VISA": "Electronic visa / ETA applied online before travel",
+      "VISA_REQUIRED": "Visa must be obtained in advance from embassy/consulate",
+      "NO_DATA": "No data, not applicable, or no admission"
+    }
+  },
+  "summary": {
+    "VISA_FREE": 27,
+    "VISA_ON_ARRIVAL": 28,
+    "E_VISA": 50,
+    "VISA_REQUIRED": 93,
+    "NO_DATA": 1
+  },
+  "countries": {
+    "Afghanistan": {
+      "category": "VISA_REQUIRED"
+    },
+    "Albania": {
+      "category": "E_VISA"
+    },
+    "Algeria": {
+      "category": "VISA_REQUIRED"
+    },
+    "Andorra": {
+      "category": "VISA_REQUIRED"
+    },
+    "Angola": {
+      "category": "VISA_FREE",
+      "visa_free_duration": "30 days"
+    },
+    "Antigua and Barbuda": {
+      "category": "E_VISA"
+    },
+    "Argentina": {
+      "category": "VISA_REQUIRED"
+    },
+    "Armenia": {
+      "category": "E_VISA"
+    },
+    "Australia": {
+      "category": "E_VISA"
+    },
+    "Austria": {
+      "category": "VISA_REQUIRED"
+    },
+    "Azerbaijan": {
+      "category": "E_VISA"
+    },
+    "Bahamas": {
+      "category": "E_VISA"
+    },
+    "Bahrain": {
+      "category": "E_VISA"
+    },
+    "Bangladesh": {
+      "category": "VISA_REQUIRED"
+    },
+    "Barbados": {
+      "category": "VISA_FREE",
+      "visa_free_duration": "90 days"
+    },
+    "Belarus": {
+      "category": "VISA_REQUIRED"
+    },
+    "Belgium": {
+      "category": "VISA_REQUIRED"
+    },
+    "Belize": {
+      "category": "VISA_REQUIRED"
+    },
+    "Benin": {
+      "category": "E_VISA"
+    },
+    "Bhutan": {
+      "category": "VISA_FREE",
+      "visa_free_duration": "14 days"
+    },
+    "Bolivia": {
+      "category": "VISA_ON_ARRIVAL"
+    },
+    "Bosnia and Herzegovina": {
+      "category": "VISA_REQUIRED"
+    },
+    "Botswana": {
+      "category": "E_VISA"
+    },
+    "Brazil": {
+      "category": "VISA_REQUIRED"
+    },
+    "Brunei": {
+      "category": "VISA_REQUIRED"
+    },
+    "Bulgaria": {
+      "category": "VISA_REQUIRED"
+    },
+    "Burkina Faso": {
+      "category": "E_VISA"
+    },
+    "Burundi": {
+      "category": "VISA_ON_ARRIVAL"
+    },
+    "Cambodia": {
+      "category": "VISA_ON_ARRIVAL"
+    },
+    "Cameroon": {
+      "category": "E_VISA"
+    },
+    "Canada": {
+      "category": "VISA_REQUIRED"
+    },
+    "Cape Verde": {
+      "category": "VISA_ON_ARRIVAL"
+    },
+    "Central African Republic": {
+      "category": "VISA_REQUIRED"
+    },
+    "Chad": {
+      "category": "VISA_REQUIRED"
+    },
+    "Chile": {
+      "category": "VISA_REQUIRED"
+    },
+    "China": {
+      "category": "VISA_REQUIRED"
+    },
+    "Colombia": {
+      "category": "E_VISA"
+    },
+    "Comoros": {
+      "category": "VISA_ON_ARRIVAL"
+    },
+    "Congo": {
+      "category": "VISA_REQUIRED"
+    },
+    "Costa Rica": {
+      "category": "VISA_REQUIRED"
+    },
+    "Croatia": {
+      "category": "VISA_REQUIRED"
+    },
+    "Cuba": {
+      "category": "VISA_REQUIRED"
+    },
+    "Cyprus": {
+      "category": "VISA_REQUIRED"
+    },
+    "Czech Republic": {
+      "category": "VISA_REQUIRED"
+    },
+    "DR Congo": {
+      "category": "E_VISA"
+    },
+    "Denmark": {
+      "category": "VISA_REQUIRED"
+    },
+    "Djibouti": {
+      "category": "VISA_ON_ARRIVAL"
+    },
+    "Dominica": {
+      "category": "VISA_FREE",
+      "visa_free_duration": "180 days"
+    },
+    "Dominican Republic": {
+      "category": "VISA_REQUIRED"
+    },
+    "Ecuador": {
+      "category": "E_VISA"
+    },
+    "Egypt": {
+      "category": "E_VISA"
+    },
+    "El Salvador": {
+      "category": "VISA_FREE",
+      "visa_free_duration": "180 days"
+    },
+    "Equatorial Guinea": {
+      "category": "E_VISA"
+    },
+    "Eritrea": {
+      "category": "VISA_REQUIRED"
+    },
+    "Estonia": {
+      "category": "VISA_REQUIRED"
+    },
+    "Ethiopia": {
+      "category": "VISA_ON_ARRIVAL"
+    },
+    "Fiji": {
+      "category": "VISA_FREE",
+      "visa_free_duration": "120 days"
+    },
+    "Finland": {
+      "category": "VISA_REQUIRED"
+    },
+    "France": {
+      "category": "VISA_REQUIRED"
+    },
+    "Gabon": {
+      "category": "E_VISA"
+    },
+    "Gambia": {
+      "category": "VISA_FREE",
+      "visa_free_duration": "90 days"
+    },
+    "Georgia": {
+      "category": "E_VISA"
+    },
+    "Germany": {
+      "category": "VISA_REQUIRED"
+    },
+    "Ghana": {
+      "category": "VISA_ON_ARRIVAL"
+    },
+    "Greece": {
+      "category": "VISA_REQUIRED"
+    },
+    "Grenada": {
+      "category": "VISA_FREE",
+      "visa_free_duration": "90 days"
+    },
+    "Guatemala": {
+      "category": "VISA_REQUIRED"
+    },
+    "Guinea": {
+      "category": "E_VISA"
+    },
+    "Guinea-Bissau": {
+      "category": "VISA_ON_ARRIVAL"
+    },
+    "Guyana": {
+      "category": "VISA_REQUIRED"
+    },
+    "Haiti": {
+      "category": "VISA_FREE",
+      "visa_free_duration": "90 days"
+    },
+    "Honduras": {
+      "category": "VISA_REQUIRED"
+    },
+    "Hong Kong": {
+      "category": "E_VISA"
+    },
+    "Hungary": {
+      "category": "VISA_REQUIRED"
+    },
+    "Iceland": {
+      "category": "VISA_REQUIRED"
+    },
+    "India": {
+      "category": "NO_DATA"
+    },
+    "Indonesia": {
+      "category": "VISA_ON_ARRIVAL"
+    },
+    "Iran": {
+      "category": "VISA_FREE",
+      "visa_free_duration": "15 days"
+    },
+    "Iraq": {
+      "category": "E_VISA"
+    },
+    "Ireland": {
+      "category": "VISA_REQUIRED"
+    },
+    "Israel": {
+      "category": "VISA_REQUIRED"
+    },
+    "Italy": {
+      "category": "VISA_REQUIRED"
+    },
+    "Ivory Coast": {
+      "category": "E_VISA"
+    },
+    "Jamaica": {
+      "category": "VISA_FREE"
+    },
+    "Japan": {
+      "category": "E_VISA"
+    },
+    "Jordan": {
+      "category": "VISA_ON_ARRIVAL"
+    },
+    "Kazakhstan": {
+      "category": "VISA_FREE",
+      "visa_free_duration": "14 days"
+    },
+    "Kenya": {
+      "category": "E_VISA"
+    },
+    "Kiribati": {
+      "category": "VISA_FREE",
+      "visa_free_duration": "90 days"
+    },
+    "Kosovo": {
+      "category": "VISA_REQUIRED"
+    },
+    "Kuwait": {
+      "category": "VISA_REQUIRED"
+    },
+    "Kyrgyzstan": {
+      "category": "E_VISA"
+    },
+    "Laos": {
+      "category": "VISA_ON_ARRIVAL"
+    },
+    "Latvia": {
+      "category": "VISA_REQUIRED"
+    },
+    "Lebanon": {
+      "category": "VISA_REQUIRED"
+    },
+    "Lesotho": {
+      "category": "E_VISA"
+    },
+    "Liberia": {
+      "category": "VISA_REQUIRED"
+    },
+    "Libya": {
+      "category": "E_VISA"
+    },
+    "Liechtenstein": {
+      "category": "VISA_REQUIRED"
+    },
+    "Lithuania": {
+      "category": "VISA_REQUIRED"
+    },
+    "Luxembourg": {
+      "category": "VISA_REQUIRED"
+    },
+    "Macao": {
+      "category": "VISA_FREE",
+      "visa_free_duration": "30 days"
+    },
+    "Madagascar": {
+      "category": "VISA_ON_ARRIVAL"
+    },
+    "Malawi": {
+      "category": "E_VISA"
+    },
+    "Malaysia": {
+      "category": "VISA_FREE"
+    },
+    "Maldives": {
+      "category": "VISA_ON_ARRIVAL"
+    },
+    "Mali": {
+      "category": "VISA_REQUIRED"
+    },
+    "Malta": {
+      "category": "VISA_REQUIRED"
+    },
+    "Marshall Islands": {
+      "category": "VISA_ON_ARRIVAL"
+    },
+    "Mauritania": {
+      "category": "VISA_ON_ARRIVAL"
+    },
+    "Mauritius": {
+      "category": "VISA_FREE",
+      "visa_free_duration": "90 days"
+    },
+    "Mexico": {
+      "category": "VISA_REQUIRED"
+    },
+    "Micronesia": {
+      "category": "VISA_FREE",
+      "visa_free_duration": "30 days"
+    },
+    "Moldova": {
+      "category": "E_VISA"
+    },
+    "Monaco": {
+      "category": "VISA_REQUIRED"
+    },
+    "Mongolia": {
+      "category": "VISA_ON_ARRIVAL"
+    },
+    "Montenegro": {
+      "category": "VISA_REQUIRED"
+    },
+    "Morocco": {
+      "category": "E_VISA"
+    },
+    "Mozambique": {
+      "category": "E_VISA"
+    },
+    "Myanmar": {
+      "category": "VISA_ON_ARRIVAL"
+    },
+    "Namibia": {
+      "category": "VISA_REQUIRED"
+    },
+    "Nauru": {
+      "category": "VISA_REQUIRED"
+    },
+    "Nepal": {
+      "category": "VISA_FREE"
+    },
+    "Netherlands": {
+      "category": "VISA_REQUIRED"
+    },
+    "New Zealand": {
+      "category": "VISA_REQUIRED"
+    },
+    "Nicaragua": {
+      "category": "VISA_REQUIRED"
+    },
+    "Niger": {
+      "category": "VISA_REQUIRED"
+    },
+    "Nigeria": {
+      "category": "E_VISA"
+    },
+    "North Korea": {
+      "category": "VISA_REQUIRED"
+    },
+    "North Macedonia": {
+      "category": "VISA_REQUIRED"
+    },
+    "Norway": {
+      "category": "VISA_REQUIRED"
+    },
+    "Oman": {
+      "category": "E_VISA"
+    },
+    "Pakistan": {
+      "category": "VISA_REQUIRED"
+    },
+    "Palau": {
+      "category": "VISA_ON_ARRIVAL"
+    },
+    "Palestine": {
+      "category": "VISA_FREE"
+    },
+    "Panama": {
+      "category": "VISA_REQUIRED"
+    },
+    "Papua New Guinea": {
+      "category": "E_VISA"
+    },
+    "Paraguay": {
+      "category": "VISA_REQUIRED"
+    },
+    "Peru": {
+      "category": "VISA_REQUIRED"
+    },
+    "Philippines": {
+      "category": "VISA_REQUIRED"
+    },
+    "Poland": {
+      "category": "VISA_REQUIRED"
+    },
+    "Portugal": {
+      "category": "VISA_REQUIRED"
+    },
+    "Qatar": {
+      "category": "VISA_ON_ARRIVAL"
+    },
+    "Romania": {
+      "category": "VISA_REQUIRED"
+    },
+    "Russia": {
+      "category": "E_VISA"
+    },
+    "Rwanda": {
+      "category": "VISA_FREE",
+      "visa_free_duration": "30 days"
+    },
+    "Saint Kitts and Nevis": {
+      "category": "VISA_FREE",
+      "visa_free_duration": "90 days"
+    },
+    "Saint Lucia": {
+      "category": "VISA_ON_ARRIVAL"
+    },
+    "Saint Vincent and the Grenadines": {
+      "category": "VISA_FREE",
+      "visa_free_duration": "90 days"
+    },
+    "Samoa": {
+      "category": "VISA_ON_ARRIVAL"
+    },
+    "San Marino": {
+      "category": "VISA_REQUIRED"
+    },
+    "Sao Tome and Principe": {
+      "category": "E_VISA"
+    },
+    "Saudi Arabia": {
+      "category": "VISA_REQUIRED"
+    },
+    "Senegal": {
+      "category": "VISA_FREE",
+      "visa_free_duration": "90 days"
+    },
+    "Serbia": {
+      "category": "VISA_REQUIRED"
+    },
+    "Seychelles": {
+      "category": "VISA_FREE",
+      "visa_free_duration": "90 days"
+    },
+    "Sierra Leone": {
+      "category": "VISA_ON_ARRIVAL"
+    },
+    "Singapore": {
+      "category": "E_VISA"
+    },
+    "Slovakia": {
+      "category": "VISA_REQUIRED"
+    },
+    "Slovenia": {
+      "category": "VISA_REQUIRED"
+    },
+    "Solomon Islands": {
+      "category": "VISA_REQUIRED"
+    },
+    "Somalia": {
+      "category": "E_VISA"
+    },
+    "South Africa": {
+      "category": "E_VISA"
+    },
+    "South Korea": {
+      "category": "E_VISA"
+    },
+    "South Sudan": {
+      "category": "E_VISA"
+    },
+    "Spain": {
+      "category": "VISA_REQUIRED"
+    },
+    "Sri Lanka": {
+      "category": "VISA_ON_ARRIVAL"
+    },
+    "Sudan": {
+      "category": "VISA_REQUIRED"
+    },
+    "Suriname": {
+      "category": "E_VISA"
+    },
+    "Swaziland": {
+      "category": "VISA_REQUIRED"
+    },
+    "Sweden": {
+      "category": "VISA_REQUIRED"
+    },
+    "Switzerland": {
+      "category": "VISA_REQUIRED"
+    },
+    "Syria": {
+      "category": "E_VISA"
+    },
+    "Taiwan": {
+      "category": "VISA_REQUIRED"
+    },
+    "Tajikistan": {
+      "category": "E_VISA"
+    },
+    "Tanzania": {
+      "category": "VISA_ON_ARRIVAL"
+    },
+    "Thailand": {
+      "category": "VISA_FREE",
+      "visa_free_duration": "60 days"
+    },
+    "Timor-Leste": {
+      "category": "VISA_ON_ARRIVAL"
+    },
+    "Togo": {
+      "category": "E_VISA"
+    },
+    "Tonga": {
+      "category": "VISA_REQUIRED"
+    },
+    "Trinidad and Tobago": {
+      "category": "VISA_FREE",
+      "visa_free_duration": "90 days"
+    },
+    "Tunisia": {
+      "category": "VISA_REQUIRED"
+    },
+    "Turkey": {
+      "category": "VISA_REQUIRED"
+    },
+    "Turkmenistan": {
+      "category": "VISA_REQUIRED"
+    },
+    "Tuvalu": {
+      "category": "VISA_ON_ARRIVAL"
+    },
+    "Uganda": {
+      "category": "E_VISA"
+    },
+    "Ukraine": {
+      "category": "VISA_REQUIRED"
+    },
+    "United Arab Emirates": {
+      "category": "E_VISA"
+    },
+    "United Kingdom": {
+      "category": "VISA_REQUIRED"
+    },
+    "United States": {
+      "category": "VISA_REQUIRED"
+    },
+    "Uruguay": {
+      "category": "VISA_REQUIRED"
+    },
+    "Uzbekistan": {
+      "category": "E_VISA"
+    },
+    "Vanuatu": {
+      "category": "VISA_FREE",
+      "visa_free_duration": "120 days"
+    },
+    "Vatican": {
+      "category": "VISA_REQUIRED"
+    },
+    "Venezuela": {
+      "category": "VISA_REQUIRED"
+    },
+    "Vietnam": {
+      "category": "E_VISA"
+    },
+    "Yemen": {
+      "category": "VISA_REQUIRED"
+    },
+    "Zambia": {
+      "category": "E_VISA"
+    },
+    "Zimbabwe": {
+      "category": "VISA_ON_ARRIVAL"
+    }
+  }
+}

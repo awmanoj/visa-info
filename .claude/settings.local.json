@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:www.henleypassportindex.com)",
+      "WebFetch(domain:www.passportindex.org)",
+      "WebSearch",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:passportindiaguide.com)",
+      "WebFetch(domain:www.atlys.com)",
+      "WebFetch(domain:india-evisa.it.com)",
+      "Bash(python3 *)",
+      "Bash(curl -s \"https://raw.githubusercontent.com/ilyankou/passport-index-dataset/master/passport-index-tidy.csv\")",
+      "Bash(sort -t',' -k3)",
+      "Bash(curl -s \"https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-50m.json\" -o /tmp/w50.json)",
+      "Bash(open /Users/manojawasthi/work/ct/visa-info/world_visa_map.html)",
+      "Bash(node --check /tmp/check.js)",
+      "Bash(ngrok version *)"
+    ]
+  }
+}
