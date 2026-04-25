@@ -14,7 +14,9 @@
       "Bash(curl -s \"https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-50m.json\" -o /tmp/w50.json)",
       "Bash(open /Users/manojawasthi/work/ct/visa-info/world_visa_map.html)",
       "Bash(node --check /tmp/check.js)",
-      "Bash(ngrok version *)"
+      "Bash(ngrok version *)",
+      "Bash(cp \"/Users/manojawasthi/Desktop/Screenshot 2026-04-25 at 4.45.11 PM.png\" /Users/manojawasthi/work/ct/visa-info/docs/screenshot-light.png)",
+      "Bash(cp \"/Users/manojawasthi/Desktop/Screenshot 2026-04-25 at 4.45.30 PM.png\" /Users/manojawasthi/work/ct/visa-info/docs/screenshot-dark.png)"
     ]
   }
 }

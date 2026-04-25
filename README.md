@@ -2,6 +2,15 @@
 
 Interactive world map of visa requirements for **Indian passport holders**, with a "visa unlock" feature that highlights additional destinations made accessible by holding visas from major countries (US, Schengen, UK, UAE, Canada, Japan, Australia, New Zealand).
 
+![Visa map — light mode](docs/screenshot-light.png)
+
+<details>
+<summary>Dark mode</summary>
+
+![Visa map — dark mode](docs/screenshot-dark.png)
+
+</details>
+
 ## What's in this repo
 
 | File | Purpose |
